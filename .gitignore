@@ -1,0 +1,5 @@
+
+# Ignore everything put in the build folder
+/build
+
+
