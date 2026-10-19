@@ -3,8 +3,6 @@ add_executable(unit_tests
     tests.cpp
 )
 
-target_include_directories(unit_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
-
 target_link_libraries(unit_tests
     
     PRIVATE
@@ -12,6 +10,7 @@ target_link_libraries(unit_tests
         project_options
     PUBLIC
         Catch2::Catch2WithMain
+        password_module
 
 )
 

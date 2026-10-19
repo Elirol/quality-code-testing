@@ -80,11 +80,13 @@ if(BUILD_TESTING)   # Only include catch2 if we compile with testing
     add_subdirectory(${CATCH2})    
 endif()
 
+# Password module #
+set(PSW "${CMAKE_CURRENT_SOURCE_DIR}/password")
+add_subdirectory(${PSW})
 
 # --- Main executable --- #
 add_executable(Main
     main.c
-    passwords.c
 )
 
 target_include_directories(Main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
@@ -92,6 +94,7 @@ target_link_libraries(Main
     PRIVATE
         project_warnings
         project_options
+        password_module
 )
 
 # --- Testing --- #
