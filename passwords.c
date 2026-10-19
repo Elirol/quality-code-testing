@@ -6,6 +6,22 @@
 
 char* generate_password(const char* allowed_symbols, size_t length) {
     // Generates a random password with size [length] using the symbols in the [allowed_symbols] list
+    /*
+    * Specification *
+    Arguments:
+        [allowed_symbols]: A constant pointer to a null-terminated array of the symbols
+        allowed in the generated password.
+        [length]: The length of the generated password excluding the null termination character.
+
+    Output:
+        Returns a pointer to a null-terminated password with the given length. May return NULL if
+        the allowed symbols are invalid, has 0 length, the given length parameter is 0, or the
+        memory allocation process failed.
+
+    Importat note:
+        The function uses rand() and does not set a seed. Set a seed before calling this function 
+        to function properly.
+    */
 
     // Check for valid initial conditions
     if (allowed_symbols == NULL || length == 0) {
@@ -32,12 +48,4 @@ char* generate_password(const char* allowed_symbols, size_t length) {
     new_password[length] = '\0';
 
     return new_password;
-}
-
-
-int password_strength(const char* password, size_t minimal_length) {
-    // Simple scoring function for assessing the strength of a password. 
-    // Additional score if is has the minimal length
-
-    return 0;
 }
