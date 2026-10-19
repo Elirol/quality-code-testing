@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -10,26 +11,27 @@ char* generate_password(const char* allowed_symbols, size_t length) {
     * Specification *
     Arguments:
         [allowed_symbols]: A constant pointer to a null-terminated array of the symbols
-        allowed in the generated password.
-        [length]: The length of the generated password excluding the null termination character.
+        allowed in the generated password. Must contain at least one symbol.
+        [length]: size_t in the range of 0 < length < SIZE_MAX.
+        The length of the generated password excluding the null termination character.
 
     Output:
         Returns a pointer to a null-terminated password with the given length. May return NULL if
-        the allowed symbols are invalid, has 0 length, the given length parameter is 0, or the
+        the allowed symbols are invalid, has 0 length, the given length parameter is 0 or SIZE_MAX, or the
         memory allocation process failed.
 
-    Importat note:
+    Important note:
         The function uses rand() and does not set a seed. Set a seed before calling this function 
         to function properly.
     */
 
     // Check for valid initial conditions
-    if (allowed_symbols == NULL || length == 0) {
+    if (allowed_symbols == NULL || length == 0 || length == SIZE_MAX) {
         return NULL;
     }
 
     // Check for valid amount of symbols
-    size_t nr_symbols = strlen(allowed_symbols);
+    int nr_symbols = (int) strlen(allowed_symbols);
     if (nr_symbols <= 0) {
         return NULL;
     }
@@ -40,7 +42,7 @@ char* generate_password(const char* allowed_symbols, size_t length) {
         return NULL;
     }
 
-    for (int i = 0; i < length; i++) {
+    for (size_t i = 0; i < length; i++) {
         new_password[i] = allowed_symbols[rand() % nr_symbols];
     }
 
