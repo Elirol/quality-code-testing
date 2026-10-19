@@ -89,7 +89,6 @@ add_executable(Main
     main.c
 )
 
-target_include_directories(Main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(Main
     PRIVATE
         project_warnings

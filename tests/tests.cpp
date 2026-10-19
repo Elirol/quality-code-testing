@@ -1,6 +1,7 @@
 #include <time.h>
-
+extern "C" {
 #include "passwords.h"
+}
 #include "catch2/catch_test_macros.hpp"
 
 SCENARIO("P1: Generating a password with NULL pointer to allowed symbols", "[passwords]") {
@@ -17,7 +18,7 @@ SCENARIO("P1: Generating a password with NULL pointer to allowed symbols", "[pas
             char* password = generate_password(symbols, length);
 
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -30,7 +31,7 @@ SCENARIO("P1: Generating a password with NULL pointer to allowed symbols", "[pas
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
         }
     }
@@ -53,7 +54,7 @@ SCENARIO("P2: Generating a password with an empty allowed symbols string.", "[pa
             char* password = generate_password(symbols, length);
 
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -66,7 +67,7 @@ SCENARIO("P2: Generating a password with an empty allowed symbols string.", "[pa
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -93,7 +94,7 @@ SCENARIO("P2: Generating a password with an empty allowed symbols string.", "[pa
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -102,7 +103,7 @@ SCENARIO("P2: Generating a password with an empty allowed symbols string.", "[pa
 
             THEN("The password should only contain the allowed symbols") {
                 for (size_t i = 0; i < length; i++) {
-                    REQUIRE(strchr(symbols, password[i]) != NULL);
+                    REQUIRE(strchr(symbols, password[i]) != nullptr);
                 }
             }
 
@@ -123,7 +124,7 @@ SCENARIO("P3: Generating a password with a non-empty allowed symbols string.", "
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -148,7 +149,7 @@ SCENARIO("P3: Generating a password with a non-empty allowed symbols string.", "
             char* password = generate_password(symbols, length);
 
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -161,7 +162,7 @@ SCENARIO("P3: Generating a password with a non-empty allowed symbols string.", "
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -170,7 +171,7 @@ SCENARIO("P3: Generating a password with a non-empty allowed symbols string.", "
 
             THEN("The password should only contain the allowed symbols") {
                 for (size_t i = 0; i < length; i++) {
-                    REQUIRE(strchr(symbols, password[i]) != NULL);
+                    REQUIRE(strchr(symbols, password[i]) != nullptr);
                 }
             }
 
@@ -194,7 +195,7 @@ SCENARIO("P4: Generating a password with length 0.", "[passwords]") {
             char* password = generate_password(symbols, length);
 
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -207,7 +208,7 @@ SCENARIO("P4: Generating a password with length 0.", "[passwords]") {
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -215,7 +216,7 @@ SCENARIO("P4: Generating a password with length 0.", "[passwords]") {
             }
 
             THEN("The password should only contain the allowed symbols") {
-                REQUIRE(strchr(symbols, password[0]) != NULL);
+                REQUIRE(strchr(symbols, password[0]) != nullptr);
             }
 
             free(password);
@@ -232,7 +233,7 @@ SCENARIO("P4: Generating a password with length 0.", "[passwords]") {
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -241,7 +242,7 @@ SCENARIO("P4: Generating a password with length 0.", "[passwords]") {
 
             THEN("The password should only contain the allowed symbols") {
                 for (size_t i = 0; i < length; i++) {
-                    REQUIRE(strchr(symbols, password[i]) != NULL);
+                    REQUIRE(strchr(symbols, password[i]) != nullptr);
                 }
             }
 
@@ -262,7 +263,7 @@ SCENARIO("P5: Generating a password with length greater than or equal to 1.", "[
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -270,7 +271,7 @@ SCENARIO("P5: Generating a password with length greater than or equal to 1.", "[
             }
 
             THEN("The password should only contain the allowed symbols") {
-                REQUIRE(strchr(symbols, password[0]) != NULL);
+                REQUIRE(strchr(symbols, password[0]) != nullptr);
             }
 
             free(password);
@@ -285,7 +286,7 @@ SCENARIO("P5: Generating a password with length greater than or equal to 1.", "[
             char* password = generate_password(symbols, length);
 
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -298,7 +299,7 @@ SCENARIO("P5: Generating a password with length greater than or equal to 1.", "[
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -307,7 +308,7 @@ SCENARIO("P5: Generating a password with length greater than or equal to 1.", "[
 
             THEN("The password should only contain the allowed symbols") {
                 for (size_t i = 0; i < length; i++) {
-                    REQUIRE(strchr(symbols, password[i]) != NULL);
+                    REQUIRE(strchr(symbols, password[i]) != nullptr);
                 }
             }
 
@@ -331,7 +332,7 @@ SCENARIO("P6: Generating a password with length SIZE_MAX.", "[passwords]") {
             char* password = generate_password(symbols, length);
 
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -345,7 +346,7 @@ SCENARIO("P6: Generating a password with length SIZE_MAX.", "[passwords]") {
 
             // According to specification, this should work, but no machine could ever allocate this much memory, so it will return NULL.
             THEN("The password should be NULL") {
-                REQUIRE(password == NULL);
+                REQUIRE(password == nullptr);
             }
         }
     }
@@ -360,7 +361,7 @@ SCENARIO("P6: Generating a password with length SIZE_MAX.", "[passwords]") {
             char* password = generate_password(symbols, length);
 
             THEN("The password should not be NULL") {
-                REQUIRE(password != NULL);
+                REQUIRE(password != nullptr);
             }
 
             THEN("The size of the password should be equal to the length") {
@@ -369,7 +370,7 @@ SCENARIO("P6: Generating a password with length SIZE_MAX.", "[passwords]") {
 
             THEN("The password should only contain the allowed symbols") {
                 for (size_t i = 0; i < length; i++) {
-                    REQUIRE(strchr(symbols, password[i]) != NULL);
+                    REQUIRE(strchr(symbols, password[i]) != nullptr);
                 }
             }
 

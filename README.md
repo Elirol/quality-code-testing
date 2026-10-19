@@ -37,3 +37,9 @@ or alternatively
 cd build
 ./Main
 ~~~
+
+To run the tests, enter the following command:
+
+~~~ cmd
+
+~~~
