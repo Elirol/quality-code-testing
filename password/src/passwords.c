@@ -31,7 +31,7 @@ char* generate_password(const char* allowed_symbols, size_t length) {
     }
 
     // Check for valid amount of symbols
-    int nr_symbols = (int) strlen(allowed_symbols);
+    size_t nr_symbols = (size_t) strlen(allowed_symbols);
     if (nr_symbols <= 0) {
         return NULL;
     }
