@@ -32,7 +32,7 @@ char* generate_password(const char* allowed_symbols, size_t length) {
 
     // Check for valid amount of symbols
     size_t nr_symbols = (size_t) strlen(allowed_symbols);
-    if (nr_symbols <= 0) {
+    if (nr_symbols == 0) {
         return NULL;
     }
 
@@ -43,7 +43,7 @@ char* generate_password(const char* allowed_symbols, size_t length) {
     }
 
     for (size_t i = 0; i < length; i++) {
-        new_password[i] = allowed_symbols[rand() % nr_symbols];
+        new_password[i] = allowed_symbols[(size_t) rand() % nr_symbols];
     }
 
     // Null terminate the password
