@@ -1,7 +1,5 @@
 #include <time.h>
-extern "C" {
 #include "passwords.h"
-}
 #include "catch2/catch_test_macros.hpp"
 
 SCENARIO("P1: Generating a password with NULL pointer to allowed symbols", "[passwords]") {

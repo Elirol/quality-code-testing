@@ -2,6 +2,7 @@
 add_library(password_module
 
     src/passwords.c
+    src/function.c
     
 )
 
